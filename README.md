@@ -14,8 +14,8 @@ Save generated passwords to a text file
 Usage
 Clone the repository:
 
-# git clone https://github.com/yourusername/password-generator.git
+- git clone https://github.com/yourusername/password-generator.git
 
 Run the script:
 
-# python password_generator.py
+- python password_generator.py
