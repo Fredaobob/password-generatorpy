@@ -1,6 +1,6 @@
-import string
-import random
 import os
+import random
+import string
 
 def generate_password(length, include_uppercase, include_numbers, include_symbols):
     characters = string.ascii_lowercase
@@ -15,7 +15,10 @@ def generate_password(length, include_uppercase, include_numbers, include_symbol
     return password
 
 def save_password(password):
-    file_path = os.path.join(os.getcwd(), 'generated_passwords.txt')
+    directory = os.path.join(os.getcwd(), '..', 'secrets')
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    file_path = os.path.join(directory, 'generated_passwords.txt')
     with open(file_path, 'a') as file:
         file.write(password + '\n')
     print(f"Password saved to {file_path}")
@@ -30,10 +33,11 @@ def main():
     password = generate_password(length, include_uppercase, include_numbers, include_symbols)
     print(f"Generated Password: {password}")
 
-    save_password_option = input("Would you like to save the password to a file? (y/n): ").lower() == 'y'
-    if save_password_option:
+    save_password_option = input("Would you like to save the password to a file? (y/n): ").lower()
+    if save_password_option == 'y':
         save_password(password)
 
 if __name__ == "__main__":
     main()
+
 
